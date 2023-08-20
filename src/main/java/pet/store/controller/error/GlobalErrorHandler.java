@@ -20,12 +20,9 @@ public class GlobalErrorHandler {
 	@ResponseStatus(code = HttpStatus.NOT_FOUND)
 	//page 5.1.b
 	public Map<String, String> handleNoSuchElementException(NoSuchElementException ex) {
-		Map<String, String> exception = new HashMap<String, String>();
-		String message = ex.toString();
 		//5.1.c
-		log.error("Exception: {}", message);
-		exception.put("message", message);
+		log.error("Exception: {}", ex.toString());
 		//5.1.d
-		return exception;
+		return Map.of("message", ex.toString());
 	}
 }
